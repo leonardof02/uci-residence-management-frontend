@@ -4,9 +4,9 @@ import BuildingDataItemList from "../components/BuildingDataItemList";
 
 export default function DashboardPage() {
   return (
-    <Flex minHeight={"100vh"}>
+    <Flex height={"100vh"}>
       <SidePanelMenu />
-      <Flex flex={1}>
+      <Flex flex={1} padding={7} overflowY={"scroll"}>
         <BuildingDataItemList />
       </Flex>
     </Flex>

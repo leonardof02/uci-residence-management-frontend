@@ -19,13 +19,13 @@ export default function BuildingDataItemList() {
   }, []);
 
   return (
-    <Stack>
+    <Stack width={"full"}>
       {isLoading ? (
         <Spinner />
       ) : (
-        buildingList.map((building, index) => (
+        buildingList.map((building) => (
           <BuildingDataItem
-            key={index}
+            key={building.number}
             instructorInCharge={building.instructorInCharge}
             apartments={building.apartments}
             availability={building.availability}
