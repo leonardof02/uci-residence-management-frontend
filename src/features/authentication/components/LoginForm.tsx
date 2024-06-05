@@ -11,7 +11,7 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { autheticateUser } from "../services/LoginService";
+import { autheticateUser } from "../services/AuthService";
 import { useNavigate } from "react-router-dom";
 
 type LoginFormValues = {
