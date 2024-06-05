@@ -54,12 +54,12 @@ export default function BuildingDataItem({
         onClick={handleClick}
         padding={3}
       >
-        <Heading>Edificio #{number}</Heading>
-        <Text>{faculty}</Text>
-        <Text>{yearOfStudents}</Text>
-        <Text>{block}</Text>
-        <Text>{availability ? "Disponible" : "No disponible"}</Text>
-        <Text>{instructorInCharge}</Text>
+        <Heading userSelect={"none"}>Edificio #{number}</Heading>
+        <Text userSelect={"none"}>{faculty}</Text>
+        <Text userSelect={"none"}>{yearOfStudents}</Text>
+        <Text userSelect={"none"}>{block}</Text>
+        <Text userSelect={"none"}>{availability ? "Disponible" : "No disponible"}</Text>
+        <Text userSelect={"none"}>{instructorInCharge}</Text>
         <IconButton
           onClick={handleClick}
           aria-label="Arrow down"
