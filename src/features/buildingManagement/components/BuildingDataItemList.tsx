@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import BuildingData from "../types/BuildingData";
 import { getBuildingList } from "../services/BuildingServices";
-import { Stack, Spinner } from "@chakra-ui/react";
+import { Stack, Spinner, Button } from "@chakra-ui/react";
 import BuildingDataItem from "./BuildingDataItem";
+import { useBuildingManagementModalState } from "../contexts/ModalContextProvider";
 
 export default function BuildingDataItemList() {
   const [buildingList, setBuildingList] = useState<BuildingData[]>([]);
   const [isLoading, setLoading] = useState<boolean>(true);
+
+  const { openCreateBuildingModal } = useBuildingManagementModalState();
 
   async function getBuildingListFromAPI() {
     const buildingData: BuildingData[] = await getBuildingList();
@@ -36,6 +39,9 @@ export default function BuildingDataItemList() {
           />
         ))
       )}
+      <Button width={"full"} onClick={openCreateBuildingModal}>
+        Agregar edificio
+      </Button>
     </Stack>
   );
 }

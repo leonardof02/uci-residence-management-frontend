@@ -10,6 +10,7 @@ import ApartmentData from "../types/ApartmentData";
 import ApartmentDataItem from "./ApartmentDataItem";
 import { useState } from "react";
 import { ArrowDownIcon, ArrowRightIcon } from "@chakra-ui/icons";
+import { useBuildingManagementModalState } from "../contexts/ModalContextProvider";
 
 type Props = {
   number: number;
@@ -31,6 +32,8 @@ export default function BuildingDataItem({
   instructorInCharge,
 }: Props) {
   const [isExpanded, setExpanded] = useState<boolean>(false);
+
+  const { openCreateApartmentModal } = useBuildingManagementModalState();
 
   function handleClick() {
     setExpanded(!isExpanded);
@@ -82,7 +85,7 @@ export default function BuildingDataItem({
             rooms={apartment.rooms}
           />
         ))}
-        <Button>Agregar Apartamento</Button>
+        <Button onClick={openCreateApartmentModal}>Agregar Apartamento</Button>
       </Stack>
     </Stack>
   );

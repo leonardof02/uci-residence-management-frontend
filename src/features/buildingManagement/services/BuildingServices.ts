@@ -18,4 +18,22 @@ async function getBuildingList(): Promise<BuildingData[]> {
   return buildingData;
 }
 
-export { getBuildingList };
+async function addRoomToApartmentByApartmentId(
+  apartmentId: number,
+  roomTotalCapacity: number
+) {
+  const response = await fetch("http://127.0.0.1:8000/api/room/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      total_capacity: roomTotalCapacity,
+      apartment: apartmentId,
+    }),
+  });
+  if (response.status !== 201) throw new Error("Error creating room");
+  await response.json();
+}
+
+export { getBuildingList, addRoomToApartmentByApartmentId };

@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Stack, Text, Button } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import ApartmentData from "../types/ApartmentData";
+import { useBuildingManagementModalState } from "../contexts/ModalContextProvider";
 
 type Props = ApartmentData;
 
@@ -9,12 +10,14 @@ const colors = ["#FFB6C1", "#89CFF0", "#E6E6FA", "#98D8D7", "#FFDAB9"];
 function shuffleArray<T>(array: T[]): T[] {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]; // Utilizamos desestructuración para intercambiar elementos
+    [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
 
-export default function ApartmentDataItem({ id, number, rooms }: Props) {
+export default function ApartmentDataItem({ number, rooms }: Props) {
+  const { openCreateRoomModal } = useBuildingManagementModalState();
+
   return (
     <Stack borderBottomColor={"#dddddd"} borderBottomWidth={1} p={2}>
       <Heading as="h4" size={"40px"}>
@@ -35,7 +38,7 @@ export default function ApartmentDataItem({ id, number, rooms }: Props) {
             </Box>
           );
         })}
-        <Button>
+        <Button onClick={openCreateRoomModal}>
           <AddIcon />
         </Button>
       </Flex>
